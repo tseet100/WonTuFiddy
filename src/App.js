@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import Timer from './Timer.js';
+import Header from './Header.js';
+import Game from './Game.js';
 
 function App() {
   return (
     <div className="App">
-      <h1>Won Tu Fiddy</h1>
+      <Header />
       <Timer />
+      <Game />
     </div>
   );
 }
