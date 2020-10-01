@@ -27,8 +27,8 @@ const Timer = () => {
   }, [isActive, seconds]);
 
   return (
-    <div className="app">
-      <div className="time">
+    <div className="timer">
+      <div className="timer__display">
         {(Math.round(seconds * 100) / 10000).toFixed(2)}s
       </div>
       <div className="row">
