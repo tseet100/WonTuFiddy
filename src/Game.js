@@ -21,11 +21,14 @@ function Game() {
   }
 
   function click(e) {
+    if (!isActive && target !== 50) setIsActive(!isActive);
+    if (+e.target.value === 50 && target === 50) {
+      window.alert('YOU WON');
+    }
     if (+e.target.value === target) {
       dispatch({type: 'CLICK_UP', idx: board.indexOf(+e.target.value)});
       setTarget(target + 1);
     }
-    // if (+e.target.value === target) setTarget(target + 1);
   }
 
   useEffect(() => {
