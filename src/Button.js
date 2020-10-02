@@ -19,19 +19,12 @@ function nums() {
 let board = nums();
 
 function Button({click}) {
-  const [start, setStart] = useState(false);
+  //   const [start, setStart] = useState(false);
   return (
     <div className="tiles">
-      {/* {nums().map((tile) => (
-        <button click={click}>{tile}</button>
-      ))} */}
-
-      {/* <button className="tiles" onClick={click} className="number">
-        1
-      </button> */}
       {board.map((tile) => (
         <div>
-          <button className="eachTile" onClick={click}>
+          <button className="eachTile" value={tile} onClick={click}>
             {tile}
           </button>
         </div>

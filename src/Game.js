@@ -4,7 +4,7 @@ import Timer from './Timer';
 import Button from './Button';
 
 function Game() {
-  const [score, setScore] = useState(0);
+  const [target, setTarget] = useState(1);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -14,12 +14,12 @@ function Game() {
 
   function reset() {
     setSeconds(0);
-    setScore(0);
+    setTarget(1);
     setIsActive(false);
   }
 
-  function click() {
-    setScore(score + 1);
+  function click(e) {
+    if (+e.target.value === target) setTarget(target + 1);
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function Game() {
         isActive={isActive}
         toggle={toggle}
       />
-      <p>Target: {score}</p>
+      <p>Target: {target}</p>
       <Button click={click} />
     </div>
   );
