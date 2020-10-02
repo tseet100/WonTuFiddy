@@ -1,0 +1,15 @@
+.tiles {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 80px 80px 80px 80px 80px;
+  grid-gap: 10px;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
+
+button {
+  outline: none;
+  height: 78px;
+  width: 78px;
+}

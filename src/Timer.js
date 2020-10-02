@@ -1,30 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './Timer.css';
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(0.0);
-  const [isActive, setIsActive] = useState(false);
+const Timer = ({seconds, isActive, toggle, reset}) => {
+  //   const [seconds, setSeconds] = useState(0);
+  //   const [isActive, setIsActive] = useState(false);
 
-  function toggle() {
-    setIsActive(!isActive);
-  }
+  //   function toggle() {
+  //     setIsActive(!isActive);
+  //   }
 
-  function reset() {
-    setSeconds(0);
-    setIsActive(false);
-  }
+  //   function reset() {
+  //     setSeconds(0);
+  //     setIsActive(false);
+  //   }
 
-  useEffect(() => {
-    let interval = null;
-    if (isActive) {
-      interval = setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
-      }, 10);
-    } else if (!isActive && seconds !== 0) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  //   useEffect(() => {
+  //     let interval = null;
+  //     if (isActive) {
+  //       interval = setInterval(() => {
+  //         setSeconds((seconds) => seconds + 1);
+  //       }, 10);
+  //     } else if (!isActive && seconds !== 0) {
+  //       clearInterval(interval);
+  //     }
+  //     return () => clearInterval(interval);
+  //   }, [isActive, seconds]);
 
   return (
     <div className="timer">
