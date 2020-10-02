@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 import './Game.css';
 import Timer from './Timer';
 import Button from './Button';
+import {useStateValue} from './StateProvider';
 
 function Game() {
   const [target, setTarget] = useState(1);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [{board}, dispatch] = useStateValue();
 
   function toggle() {
     setIsActive(!isActive);
@@ -19,7 +21,11 @@ function Game() {
   }
 
   function click(e) {
-    if (+e.target.value === target) setTarget(target + 1);
+    if (+e.target.value === target) {
+      dispatch({type: 'CLICK_UP', idx: board.indexOf(+e.target.value)});
+      setTarget(target + 1);
+    }
+    // if (+e.target.value === target) setTarget(target + 1);
   }
 
   useEffect(() => {
