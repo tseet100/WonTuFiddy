@@ -3,12 +3,12 @@ import './Game.css';
 import Timer from './Timer';
 import Button from './Button';
 import {useStateValue} from './StateProvider';
+import {clickUp, newGame} from './reducer';
 
 function Game() {
-  const [target, setTarget] = useState(1);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [{board}, dispatch] = useStateValue();
+  const [{board, target}, dispatch] = useStateValue();
 
   function toggle() {
     setIsActive(!isActive);
@@ -16,18 +16,18 @@ function Game() {
 
   function reset() {
     setSeconds(0);
-    setTarget(1);
     setIsActive(false);
+    dispatch(newGame());
   }
 
   function click(e) {
     if (!isActive && target !== 50) setIsActive(!isActive);
     if (+e.target.value === 50 && target === 50) {
       window.alert('YOU WON');
+      setIsActive(!isActive);
     }
     if (+e.target.value === target) {
-      dispatch({type: 'CLICK_UP', idx: board.indexOf(+e.target.value)});
-      setTarget(target + 1);
+      dispatch(clickUp(board.indexOf(+e.target.value), target));
     }
   }
 
@@ -51,7 +51,7 @@ function Game() {
         isActive={isActive}
         toggle={toggle}
       />
-      <p>Target: {target}</p>
+      <p className="target">Target: {target}</p>
       <Button click={click} />
     </div>
   );

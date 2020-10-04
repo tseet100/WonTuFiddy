@@ -7,16 +7,22 @@ export const initialState = {
   replacementArr: replacementArr,
 };
 
+export const clickUp = (idx, target) => ({type: 'CLICK_UP', idx, target});
+export const newGame = () => ({type: 'NEW_GAME'});
+
 const reducer = (state, action) => {
-  console.log('ACTION', action);
   switch (action.type) {
+    case 'NEW_GAME':
+      return {
+        ...state,
+        board: nums(),
+        target: 1,
+      };
     case 'CLICK_UP':
       let oldTarget = state.target;
       let newTarget = oldTarget + 1;
       let newBoard = [...state.board];
-      console.log('NEWBOARD', newBoard[action.idx]);
       newBoard[action.idx] = replacementArr[state.target - 1];
-      console.log('NEWBOARD', newBoard);
       return {
         ...state,
         target: newTarget,

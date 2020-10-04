@@ -15,7 +15,13 @@
   -webkit-animation: colorchange 20s infinite alternate;
 }
 
-.button {
+.timer__buttons button {
+  height: 35px;
+  width: 50px;
+}
+/* .button {
+  display: grid;
+  justify-content: center;
   padding: 0.6rem 1.5rem;
   margin: 0.4rem;
   border-radius: 3px;
@@ -23,7 +29,7 @@
   font-weight: 600;
   font-size: 0.8rem;
   border-style: groove;
-}
+} */
 
 .button:focus {
   outline-width: 0;

@@ -7,7 +7,7 @@ function Button({click}) {
   return (
     <div className="tiles">
       {board.map((tile) => (
-        <button className="eachTile" value={tile} onClick={click}>
+        <button className="eachTile" key={tile} value={tile} onClick={click}>
           {tile}
         </button>
       ))}

@@ -6,3 +6,7 @@
   height: 100px;
   width: 100px;
 }
+
+.target {
+  font-size: calc(10px + 2vmin);
+}
