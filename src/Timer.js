@@ -17,7 +17,6 @@ const Timer = ({seconds, isActive, toggle, reset}) => {
           {isActive ? 'Pause' : 'Start'}
         </button> */}
         <button onClick={reset}>new</button>
-        <button>pause</button>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export const medium = () => {
   );
 };
 
-export const medium2 = (x = 0) => {
+export const medium2 = () => {
   let arr = [];
   for (let i = 1; i < 26; i++) {
     arr.push(i + 25);
@@ -56,4 +56,9 @@ export const easy2 = () => {
     (a, v) => a.splice(Math.floor(Math.random() * a.length), 0, v) && a,
     []
   );
+};
+
+export const gameDifficultyLimits = {
+  easy: 18,
+  medium: 50,
 };

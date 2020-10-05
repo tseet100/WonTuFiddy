@@ -15,8 +15,8 @@ export const clickUp = (idx, target, mode) => ({
   mode,
 });
 export const selectMode = (mode) => ({type: 'SELECT_MODE', mode});
-export const easyMode = () => ({type: 'EASY_GAME'});
-export const mediumMode = () => ({type: 'MEDIUM_GAME'});
+export const easyMode = (target) => ({type: 'EASY_GAME', target});
+export const mediumMode = (target) => ({type: 'MEDIUM_GAME', target});
 
 const modeBoardObj = {
   easy: easy(),
@@ -42,11 +42,10 @@ const reducer = (state, action) => {
         target: 1,
       };
     case 'CLICK_UP':
-      let oldTarget = state.target;
-      let newTarget = oldTarget + 1;
+      let newTarget = state.target;
+      newTarget = newTarget + 1;
       let newBoard = [...state.board];
       let replacementArr = replacementObj[action.mode];
-      console.log('NEWBOARD', action);
       newBoard[action.idx] = replacementArr[state.target - 1];
       return {
         ...state,

@@ -4,7 +4,7 @@ import Timer from './Timer';
 import Button from './Button';
 import {useStateValue} from './StateProvider';
 import {clickUp, selectMode, easyMode, mediumMode, modes} from './reducer';
-import {medium2} from './Functions';
+import {gameDifficultyLimits} from './Functions';
 
 function Game() {
   const [seconds, setSeconds] = useState(0);
@@ -27,13 +27,14 @@ function Game() {
     // ) : (
     //   <h1>hardmode</h1>
     // );
-    let restartGame = mode === 'medium' ? mediumMode() : <h1>selectmode</h1>;
-    dispatch(mediumMode());
+    let restartGame = mode === 'medium' ? mediumMode() : easyMode();
+    dispatch(restartGame);
   }
 
   function click(e) {
-    if (!isActive && target !== 50) setIsActive(!isActive);
-    if (+e.target.value === 3 && target === 3) {
+    let setLimit = gameDifficultyLimits[mode];
+    if (!isActive && target !== setLimit) setIsActive(!isActive);
+    if (+e.target.value === setLimit && target === setLimit) {
       window.alert('YOU WON');
       setIsActive(!isActive);
     }
