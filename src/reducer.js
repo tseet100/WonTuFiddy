@@ -73,6 +73,7 @@ const reducer = (state, action) => {
         ...state,
         mode: action.mode,
         board: modeFunction,
+        target: 1,
       };
     default:
       return state;

@@ -47,6 +47,7 @@ function Game() {
   }
 
   function chooseMode(e) {
+    reset();
     dispatch(selectMode(e.target.value));
   }
 
