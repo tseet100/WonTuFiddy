@@ -8,6 +8,16 @@
   border: none;
 }
 
+.tiles__easy {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 80px 80px 80px;
+  grid-gap: 10px;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
+
 button {
   outline: none;
   height: 78px;
@@ -19,4 +29,37 @@ button:hover {
   -webkit-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
   -moz-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
   box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
+
+  /* animation: effect 0.4s infinite; */
+}
+
+button:active {
+  position: relative;
+  top: 1px;
+}
+
+@keyframes effect {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+
+  20% {
+    transform: translateX(-4px) rotate(-4deg);
+  }
+
+  40% {
+    transform: translateX(-2px) rotate(-2deg);
+  }
+
+  60% {
+    transform: translateX(4px) rotate(4deg);
+  }
+
+  80% {
+    transform: translateX(2px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
 }

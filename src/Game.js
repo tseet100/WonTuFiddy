@@ -3,12 +3,12 @@ import './Game.css';
 import Timer from './Timer';
 import Button from './Button';
 import {useStateValue} from './StateProvider';
-import {clickUp, newGame} from './reducer';
+import {clickUp, selectMode, easyMode, mediumMode, modes} from './reducer';
 
 function Game() {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [{board, target}, dispatch] = useStateValue();
+  const [{board, target, mode}, dispatch] = useStateValue();
 
   function toggle() {
     setIsActive(!isActive);
@@ -17,18 +17,22 @@ function Game() {
   function reset() {
     setSeconds(0);
     setIsActive(false);
-    dispatch(newGame());
+    dispatch(mediumMode());
   }
 
   function click(e) {
     if (!isActive && target !== 50) setIsActive(!isActive);
-    if (+e.target.value === 50 && target === 50) {
+    if (+e.target.value === 3 && target === 3) {
       window.alert('YOU WON');
       setIsActive(!isActive);
     }
     if (+e.target.value === target) {
       dispatch(clickUp(board.indexOf(+e.target.value), target));
     }
+  }
+
+  function chooseMode(e) {
+    dispatch(selectMode(e.target.value));
   }
 
   useEffect(() => {
@@ -43,6 +47,8 @@ function Game() {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
+  let easy = mode === 'easy' ? <h1>EASY MODE ACTIVATED</h1> : '';
+  let medium = mode === 'medium' ? <Button click={click} /> : '';
   return (
     <div>
       <Timer
@@ -52,7 +58,15 @@ function Game() {
         toggle={toggle}
       />
       <p className="target">Target: {target}</p>
-      <Button click={click} />
+      <select onChange={chooseMode}>
+        {modes.map((mode) => (
+          <option key={mode} value={mode}>
+            {mode}
+          </option>
+        ))}
+      </select>
+      {easy}
+      {medium}
     </div>
   );
 }
