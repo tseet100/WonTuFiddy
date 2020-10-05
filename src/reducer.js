@@ -15,17 +15,26 @@ export const clickUp = (idx, target, mode) => ({
   mode,
 });
 export const selectMode = (mode) => ({type: 'SELECT_MODE', mode});
-export const easyMode = (target) => ({type: 'EASY_GAME', target});
-export const mediumMode = (target) => ({type: 'MEDIUM_GAME', target});
+export const easyMode = () => ({type: 'EASY_GAME'});
+export const mediumMode = () => ({type: 'MEDIUM_GAME'});
+export const hardMode = () => ({type: 'HARD_GAME'});
+
+export const wonFuncObj = {
+  easy: easyMode(),
+  medium: mediumMode(),
+  hard: hardMode(),
+};
 
 const modeBoardObj = {
   easy: easy(),
   medium: medium(),
+  hard: medium(),
 };
 
 const replacementObj = {
   easy: easy2(),
   medium: medium2(),
+  hard: medium2(),
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,6 +45,12 @@ const reducer = (state, action) => {
         target: 1,
       };
     case 'MEDIUM_GAME':
+      return {
+        ...state,
+        board: medium(),
+        target: 1,
+      };
+    case 'HARD_GAME':
       return {
         ...state,
         board: medium(),
@@ -53,7 +68,6 @@ const reducer = (state, action) => {
         board: newBoard,
       };
     case 'SELECT_MODE':
-      console.log('action', action);
       let modeFunction = modeBoardObj[action.mode];
       return {
         ...state,
