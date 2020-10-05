@@ -8,7 +8,8 @@
   border: none;
 }
 
-.tiles__hard > button > h4 {
+.tiles__hard > button {
+  display: inline-block;
   animation: 2s fadeIn;
   animation-iteration-count: 100;
   animation-duration: 3s;
