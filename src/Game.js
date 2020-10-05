@@ -31,14 +31,14 @@ function Game() {
     dispatch(mediumMode());
   }
 
-  function click(e, mode) {
+  function click(e) {
     if (!isActive && target !== 50) setIsActive(!isActive);
     if (+e.target.value === 3 && target === 3) {
       window.alert('YOU WON');
       setIsActive(!isActive);
     }
     if (+e.target.value === target) {
-      dispatch(clickUp(board.indexOf(+e.target.value), target));
+      dispatch(clickUp(board.indexOf(+e.target.value), target, mode));
     }
   }
 
@@ -73,7 +73,7 @@ function Game() {
           </option>
         ))}
       </select>
-      {!mode ? '' : <Button click={click} />}
+      {!mode ? '' : <Button mode={mode} click={click} />}
     </div>
   );
 }

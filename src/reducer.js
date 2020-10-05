@@ -1,14 +1,19 @@
-import {medium, medium2, easy} from './Functions';
+import {medium, medium2, easy, easy2} from './Functions';
 
 export const modes = ['select level', 'easy', 'medium', 'hard'];
 
 export const initialState = {
   board: [],
   target: 1,
-  difficulty: modes,
+  mode: '',
 };
 
-export const clickUp = (idx, target) => ({type: 'CLICK_UP', idx, target});
+export const clickUp = (idx, target, mode) => ({
+  type: 'CLICK_UP',
+  idx,
+  target,
+  mode,
+});
 export const selectMode = (mode) => ({type: 'SELECT_MODE', mode});
 export const easyMode = () => ({type: 'EASY_GAME'});
 export const mediumMode = () => ({type: 'MEDIUM_GAME'});
@@ -18,6 +23,10 @@ const modeBoardObj = {
   medium: medium(),
 };
 
+const replacementObj = {
+  easy: easy2(),
+  medium: medium2(),
+};
 const reducer = (state, action) => {
   switch (action.type) {
     case 'EASY_GAME':
@@ -36,7 +45,9 @@ const reducer = (state, action) => {
       let oldTarget = state.target;
       let newTarget = oldTarget + 1;
       let newBoard = [...state.board];
-      newBoard[action.idx] = medium2()[state.target - 1];
+      let replacementArr = replacementObj[action.mode];
+      console.log('NEWBOARD', action);
+      newBoard[action.idx] = replacementArr[state.target - 1];
       return {
         ...state,
         target: newTarget,
