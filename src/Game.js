@@ -4,6 +4,7 @@ import Timer from './Timer';
 import Button from './Button';
 import {useStateValue} from './StateProvider';
 import {clickUp, selectMode, easyMode, mediumMode, modes} from './reducer';
+import {medium2} from './Functions';
 
 function Game() {
   const [seconds, setSeconds] = useState(0);
@@ -17,10 +18,20 @@ function Game() {
   function reset() {
     setSeconds(0);
     setIsActive(false);
-    dispatch(selectMode());
+    // let restartGame = !mode ? (
+    //   <h1>HERE</h1>
+    // ) : mode === 'medium' ? (
+    //   mediumMode()
+    // ) : mode === 'easy' ? (
+    //   easyMode()
+    // ) : (
+    //   <h1>hardmode</h1>
+    // );
+    let restartGame = mode === 'medium' ? mediumMode() : <h1>selectmode</h1>;
+    dispatch(mediumMode());
   }
 
-  function click(e) {
+  function click(e, mode) {
     if (!isActive && target !== 50) setIsActive(!isActive);
     if (+e.target.value === 3 && target === 3) {
       window.alert('YOU WON');
@@ -47,8 +58,6 @@ function Game() {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
-  let easy = mode === 'easy' ? <h1>EASY MODE ACTIVATED</h1> : '';
-  let medium = mode === 'medium' ? <Button mode={mode} click={click} /> : '';
   return (
     <div>
       <Timer
@@ -57,7 +66,6 @@ function Game() {
         isActive={isActive}
         toggle={toggle}
       />
-      <p className="target">Target: {target}</p>
       <select onChange={chooseMode}>
         {modes.map((mode) => (
           <option key={mode} value={mode}>
@@ -65,7 +73,7 @@ function Game() {
           </option>
         ))}
       </select>
-      {medium}
+      {!mode ? '' : <Button click={click} />}
     </div>
   );
 }

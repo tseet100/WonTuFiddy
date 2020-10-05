@@ -1,4 +1,4 @@
-export const nums = () => {
+export const medium = () => {
   let arr = [];
   for (let i = 1; i < 26; i++) {
     arr.push(i);
@@ -13,7 +13,7 @@ export const nums = () => {
   );
 };
 
-const numsTo50 = (x = 0) => {
+export const medium2 = (x = 0) => {
   let arr = [];
   for (let i = 1; i < 26; i++) {
     arr.push(i + 25);
@@ -27,8 +27,6 @@ const numsTo50 = (x = 0) => {
     []
   );
 };
-
-export const replacementArr = numsTo50();
 
 export const easy = () => {
   let arr = [];
