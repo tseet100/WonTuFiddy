@@ -7,6 +7,22 @@
   outline: none;
   border: none;
 }
+
+.tiles__hard > button > h4 {
+  animation: 2s fadeIn;
+  animation-iteration-count: 100;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  transition: opacity 5s infinite;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .tiles__medium {
   display: grid;
   justify-content: center;
@@ -31,6 +47,9 @@ button {
   outline: none;
   height: 78px;
   width: 78px;
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+  transition: opacity 1.25s;
 }
 
 button:hover {
@@ -47,7 +66,7 @@ button:active {
   top: 1px;
 }
 
-@keyframes effect {
+/* @keyframes effect {
   0% {
     transform: translateX(0px) rotate(0deg);
   }
@@ -71,4 +90,4 @@ button:active {
   100% {
     transform: translateX(0px) rotate(0deg);
   }
-}
+} */

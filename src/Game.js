@@ -26,15 +26,6 @@ function Game() {
   function reset() {
     setSeconds(0);
     setIsActive(false);
-    // let restartGame = !mode ? (
-    //   <h1>HERE</h1>
-    // ) : mode === 'medium' ? (
-    //   mediumMode()
-    // ) : mode === 'easy' ? (
-    //   easyMode()
-    // ) : (
-    //   <h1>hardmode</h1>
-    // );
     let restartGame = mode === 'medium' ? mediumMode() : easyMode(0);
     let game = mode === 'hard' ? hardMode() : restartGame;
     dispatch(game);

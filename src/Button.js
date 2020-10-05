@@ -4,13 +4,14 @@ import {useStateValue} from './StateProvider';
 
 function Button({click, mode}) {
   const [{board, target}, dispatch] = useStateValue();
+
   return (
     <div>
       <p className="target">Target: {target}</p>
       <div className={`tiles__${mode}`}>
         {board.map((tile) => (
           <button className="eachTile" key={tile} value={tile} onClick={click}>
-            {tile}
+            <h4>{tile}</h4>
           </button>
         ))}
       </div>
