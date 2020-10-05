@@ -1,9 +1,9 @@
 import {nums, replacementArr, easy} from './Functions';
 
-export const modes = ['easy', 'medium', 'hard'];
+export const modes = ['select level', 'easy', 'medium', 'hard'];
 
 export const initialState = {
-  board: nums(),
+  board: {easy: easy(), medium: nums()},
   target: 1,
   difficulty: modes,
   replacementArr: replacementArr,

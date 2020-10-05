@@ -2,11 +2,11 @@ import './Button.css';
 import React, {useEffect, useState} from 'react';
 import {useStateValue} from './StateProvider';
 
-function Button({click}) {
+function Button({click, mode}) {
   const [{board}, dispatch] = useStateValue();
   return (
     <div className="tiles">
-      {board.map((tile) => (
+      {board[`${mode}`].map((tile) => (
         <button className="eachTile" key={tile} value={tile} onClick={click}>
           {tile}
         </button>

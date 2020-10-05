@@ -17,7 +17,7 @@ function Game() {
   function reset() {
     setSeconds(0);
     setIsActive(false);
-    dispatch(mediumMode());
+    dispatch(selectMode());
   }
 
   function click(e) {
@@ -48,7 +48,7 @@ function Game() {
   }, [isActive, seconds]);
 
   let easy = mode === 'easy' ? <h1>EASY MODE ACTIVATED</h1> : '';
-  let medium = mode === 'medium' ? <Button click={click} /> : '';
+  let medium = mode === 'medium' ? <Button mode={mode} click={click} /> : '';
   return (
     <div>
       <Timer
@@ -65,7 +65,6 @@ function Game() {
           </option>
         ))}
       </select>
-      {easy}
       {medium}
     </div>
   );
