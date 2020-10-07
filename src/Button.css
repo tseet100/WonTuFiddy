@@ -1,3 +1,7 @@
+.eachTile {
+  font-size: 35px;
+}
+
 .tiles__hard {
   display: grid;
   justify-content: center;
@@ -24,6 +28,7 @@
     opacity: 1;
   }
 }
+
 .tiles__medium {
   display: grid;
   justify-content: center;

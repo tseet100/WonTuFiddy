@@ -31,15 +31,25 @@ function Game() {
     dispatch(game);
   }
 
+  function saveScore(currentScore) {
+    currentScore = (Math.round(currentScore * 100) / 10000).toFixed(2);
+    let highScore = window.localStorage.getItem(`score${mode}`);
+    if (highScore > currentScore) {
+      window.alert('NEW HIGH SCORE');
+      window.localStorage.setItem(`score${mode}`, currentScore);
+    } else window.alert('ALMOST! LITTLE FASTER!');
+  }
+
   function click(e) {
     let setLimit = gameDifficultyLimits[mode];
     if (!isActive && target !== setLimit) setIsActive(!isActive);
     if (+e.target.value === target) {
       dispatch(clickUp(board.indexOf(+e.target.value), target, mode));
     }
+    //game won
     if (+e.target.value === setLimit && target === setLimit) {
-      window.alert('YOU WON');
       setIsActive(!isActive);
+      saveScore(seconds);
       setSeconds(0);
       let dispatchFunc = wonFuncObj[mode];
       dispatch(dispatchFunc);
