@@ -34,7 +34,10 @@ function Game() {
   function saveScore(currentScore) {
     currentScore = (Math.round(currentScore * 100) / 10000).toFixed(2);
     let highScore = window.localStorage.getItem(`score${mode}`);
-    if (highScore > currentScore) {
+    if (!highScore) {
+      window.localStorage.setItem(`score${mode}`, currentScore);
+      window.alert('GREAT JOB! NEW HIGH SCORE!');
+    } else if (highScore > currentScore) {
       window.alert('NEW HIGH SCORE');
       window.localStorage.setItem(`score${mode}`, currentScore);
     } else window.alert('ALMOST! LITTLE FASTER!');

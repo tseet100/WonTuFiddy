@@ -1,4 +1,4 @@
-import {medium, medium2, easy, easy2} from './Functions';
+import {medium, medium2, easy, easy2, shuffleArr} from './Functions';
 
 export const modes = ['select level', 'easy', 'medium', 'hard'];
 
@@ -62,6 +62,7 @@ const reducer = (state, action) => {
       let newBoard = [...state.board];
       let replacementArr = replacementObj[action.mode];
       newBoard[action.idx] = replacementArr[state.target - 1];
+      if (action.mode === 'hard') newBoard = shuffleArr(newBoard);
       return {
         ...state,
         target: newTarget,

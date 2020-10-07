@@ -58,6 +58,13 @@ export const easy2 = () => {
   );
 };
 
+export const shuffleArr = (arr) => {
+  return arr.reduce(
+    (a, v) => a.splice(Math.floor(Math.random() * a.length), 0, v) && a,
+    []
+  );
+};
+
 export const gameDifficultyLimits = {
   easy: 18,
   medium: 50,
