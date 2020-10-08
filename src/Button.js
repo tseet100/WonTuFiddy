@@ -2,7 +2,7 @@ import './Button.css';
 import React, {useEffect, useState} from 'react';
 import {useStateValue} from './StateProvider';
 
-function Button({click, mode}) {
+function Button({click, isActive, mode}) {
   const [{board, target}, dispatch] = useStateValue();
 
   const highScore = window.localStorage.getItem(`score${mode}`)

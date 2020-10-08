@@ -78,12 +78,7 @@ function Game() {
 
   return (
     <div>
-      <Timer
-        reset={reset}
-        seconds={seconds}
-        isActive={isActive}
-        toggle={toggle}
-      />
+      <Timer reset={reset} seconds={seconds} />
       <select onChange={chooseMode}>
         {modes.map((mode) => (
           <option key={mode} value={mode}>
@@ -91,7 +86,7 @@ function Game() {
           </option>
         ))}
       </select>
-      {!mode ? '' : <Button mode={mode} click={click} />}
+      {!mode ? '' : <Button isActive={isActive} mode={mode} click={click} />}
     </div>
   );
 }

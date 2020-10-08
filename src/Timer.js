@@ -1,7 +1,7 @@
 import React from 'react';
 import './Timer.css';
 
-const Timer = ({seconds, isActive, toggle, reset}) => {
+const Timer = ({seconds, reset}) => {
   return (
     <div className="timer">
       <div className="timer__display">
